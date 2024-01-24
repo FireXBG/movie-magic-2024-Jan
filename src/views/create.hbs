@@ -7,7 +7,7 @@
               </h2>
             </div>
 
-            <form action="#" method="" class="createForm">
+            <form action="/create" method="POST" class="createForm">
               <h2>Add Movie</h2>
               <ul class="noBullet">
                 <li>
@@ -16,8 +16,7 @@
                     type="text"
                     class="inputFields"
                     id="title"
-                    name=""
-                    value=""
+                    name="title"
                   />
                 </li>
                 <li>
@@ -26,8 +25,7 @@
                     type="text"
                     class="inputFields"
                     id="genre"
-                    name=""
-                    value=""
+                    name="genre"
                   />
                 </li>
                 <li>
@@ -36,8 +34,7 @@
                     type="text"
                     class="inputFields"
                     id="director"
-                    name=""
-                    value=""
+                    name="director"
                   />
                 </li>
                 <li>
@@ -46,8 +43,7 @@
                     type="number"
                     class="inputFields"
                     id="year"
-                    name=""
-                    value=""
+                    name="date"
                   />
                 </li>
                 <li>
@@ -56,8 +52,7 @@
                     type="text"
                     class="inputFields"
                     id="image"
-                    name=""
-                    value=""
+                    name="imageUrl"
                   />
                 </li>
                 <li>
@@ -66,8 +61,7 @@
                     type="text"
                     class="inputFields"
                     id="rating"
-                    name=""
-                    value=""
+                    name="rating"
                   />
                 </li>
                 <li>
@@ -79,7 +73,7 @@
                   ></textarea>
                 </li>
                 <li id="center-btn">
-                  <button id="create-btn">Add Movie</button>
+                  <button type="submit" id="create-btn">Add Movie</button>
                 </li>
               </ul>
             </form>
