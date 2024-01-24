@@ -8,7 +8,7 @@ function configHandlebars(app) {
       extname: "hbs",
     })
   );
-  app.set("views", path.join(__dirname, "views"));
+  app.set("views", path.resolve("src/views"));
   app.set("view engine", "hbs");
 
   return app;
