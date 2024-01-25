@@ -4,8 +4,6 @@ const movieService = require("../services/movieService");
 
 router.get("/create", (req, res) => {
   res.render("create");
-
-  res.redirect("/");
 });
 
 router.post("/create", (req, res) => {
