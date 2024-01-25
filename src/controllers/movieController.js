@@ -11,4 +11,11 @@ router.post("/create", (req, res) => {
   movieService.create(newMovie);
 });
 
+router.get("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+  const movie = movieService.getOne(movieId);
+
+  res.render("details", { movie });
+});
+
 module.exports = router;
