@@ -15,6 +15,8 @@ router.get("/movies/:id", (req, res) => {
   const movieId = req.params.id;
   const movie = movieService.getOne(movieId);
 
+  movie.ratingStars = "&#x2605;".repeat(movie.rating);
+
   res.render("details", { movie });
 });
 
