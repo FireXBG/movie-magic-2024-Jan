@@ -37,7 +37,8 @@ exports.search = (title, genre, year) => {
 };
 
 exports.getAll = () => {
-  return movies.slice();
+  const movies = Movie.find();
+  return movies;
 };
 
 exports.create = (movieData) => {
