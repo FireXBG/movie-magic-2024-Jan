@@ -1,9 +1,9 @@
 const express = require("express");
-const handlebars = require("express-handlebars");
-const path = require("path");
-const routes = require("./routes");
+const mongoose = require("mongoose");
+
 const configHandlebars = require("./config/configHandlebars");
 const configExpress = require("./config/configExpress");
+const routes = require("./routes");
 
 const app = express();
 const port = 3000;
@@ -13,6 +13,16 @@ configExpress(app);
 
 app.use(routes);
 
-app.listen(3000, () => {
-  console.log(`Server is on post ${port}`);
-});
+mongoose
+  .connect("mongodb://localhost:27017/magic-movies")
+  .then(() => {
+    console.log("DB connected successfully!");
+    app.listen(3000, () => {
+      console.log(`Server is on post ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("DB connection failed!");
+    console.log("---------------------");
+    console.log(err);
+  });

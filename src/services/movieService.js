@@ -1,3 +1,5 @@
+const Movie = require("../models/Movie");
+
 const movies = [
   {
     _id: 1,
@@ -16,13 +18,30 @@ const movies = [
   },
 ];
 
+exports.search = (title, genre, year) => {
+  let result = movies.slice;
+
+  if (title) {
+    result.filter((movie) => movie.title.includes(title));
+  }
+
+  if (genre) {
+    result.filter((movie) => movie.genre === genre);
+  }
+
+  if (year) {
+    result.filter((movie) => movie.year === year);
+  }
+
+  return result;
+};
+
 exports.getAll = () => {
   return movies.slice();
 };
 
 exports.create = (movieData) => {
-  movieData._id = movies[movies.length - 1]._id + 1;
-  movies.push(movieData);
+  return Movie.create(movieData);
 };
 
 exports.getOne = (movieId) => {
