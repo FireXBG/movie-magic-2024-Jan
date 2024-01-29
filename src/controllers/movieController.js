@@ -21,11 +21,11 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.get("/movies/:id", (req, res) => {
+router.get("/movies/:id", async (req, res) => {
   const movieId = req.params.id;
-  const movie = movieService.getOne(movieId);
+  const movie = await movieService.getOne(movieId).lean();
 
-  movie.ratingStars = "&#x2605;".repeat(movie.rating);
+  movie.rating = new Array(Number(movie.rating)).fill(true);
 
   res.render("details", { movie });
 });
