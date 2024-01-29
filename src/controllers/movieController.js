@@ -30,4 +30,8 @@ router.get("/movies/:id", async (req, res) => {
   res.render("details", { movie });
 });
 
+router.get("/movies/:id/attach", async (req, res) => {
+  res.render("movie/attach");
+});
+
 module.exports = router;
