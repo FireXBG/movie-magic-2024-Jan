@@ -1,26 +1,23 @@
 const Movie = require("../models/Movie");
 
-exports.search = async (title, genre, year) => {
-  let result = await Movie.find().lean();
+exports.getAll = () => Movie.find();
+
+exports.search = (title, genre, year) => {
+  let query = {};
 
   if (title) {
-    result.filter((movie) => movie.title.includes(title));
+    query.title = new RegExp(title, "i");
   }
 
   if (genre) {
-    result.filter((movie) => movie.genre === genre);
+    query.genre = genre.toLowerCase();
   }
 
   if (year) {
-    result.filter((movie) => movie.year === year);
+    query.year = year;
   }
 
-  return result;
-};
-
-exports.getAll = () => {
-  const movies = Movie.find();
-  return movies;
+  return Movie.find(query);
 };
 
 exports.create = (movieData) => Movie.create(movieData);
