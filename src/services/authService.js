@@ -1,12 +1,17 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("../lib/jwt");
+const { SECRET } = require("../config/config");
 
-const SECRET = "kopdkwapokdjioabicaiejpodfwajopxwopja";
+exports.register = async (userData) => {
+  const user = await User.findOne({ email: userData.email });
 
-// TODO: check if user exists
+  if (user) {
+    throw new Error("Email already exists");
+  }
 
-exports.register = (userData) => User.create(userData);
+  return User.create(userData);
+};
 
 exports.login = async (email, password) => {
   // Get user from db
@@ -29,7 +34,7 @@ exports.login = async (email, password) => {
     email: user.email,
   };
 
-  const token = await jwt.sign(payload, SECRET, { expiresIn: "1h" });
+  const token = await jwt.sign(payload, SECRET, { expiresIn: "2h" });
 
   // return token
   return token;
