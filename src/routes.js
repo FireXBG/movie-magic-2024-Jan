@@ -1,16 +1,18 @@
-const router = require("express").Router();
-const homeController = require("./controllers/homeController");
-const movieController = require("./controllers/movieController.js");
-const castController = require("./controllers/castController.js");
-const authController = require("./controllers/authController.js");
+const router = require('express').Router();
+
+const homeController = require('./controllers/homeController'); 
+const movieController = require('./controllers/movieController');
+const castController = require('./controllers/castController');
+const authController = require('./controllers/authController');
+const { validate } = require('./utils/errorUtils');
 
 router.use(homeController);
 router.use(movieController);
-router.use("/cast", castController);
-router.use("/auth", authController);
+router.use('/cast', castController);
+router.use('/auth', authController);
 
-router.get("*", (req, res) => {
-  res.render("404");
+router.get('*', (req, res) => {
+    res.redirect('/404');
 });
 
 module.exports = router;
